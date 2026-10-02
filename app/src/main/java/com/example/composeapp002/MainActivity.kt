@@ -16,6 +16,7 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
@@ -98,6 +99,7 @@ class MainActivity : ComponentActivity() {
                     }
                     Text(text = "Выбранный элемент: " + selected)
                     var color by remember { mutableStateOf(Color.Green) }
+                    var checked by remember { mutableStateOf(false) }
                     Column(
                         modifier = Modifier.selectableGroup()
                     ) {
@@ -117,6 +119,22 @@ class MainActivity : ComponentActivity() {
                                 Icon(painter = painterResource(R.drawable.ic_launcher_foreground),
                                     contentDescription = "123")
                             }
+                        }
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .background(color)
+                                .fillMaxWidth()
+                        ){
+                            IconToggleButton(
+                                checked = checked,
+                                onCheckedChange = { checked = it}
+                            ) {
+                                Icon(painter = painterResource(R.drawable.ic_launcher_foreground),
+                                    contentDescription = "123",
+                                    tint = if(checked) Color.Blue else Color.Red)
+                            }
+                            Text(text = if(checked) "Выбрано" else "Не выбрано")
                         }
                     }
                 }
