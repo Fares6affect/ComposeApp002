@@ -6,14 +6,18 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconToggleButton
@@ -136,6 +140,22 @@ class MainActivity : ComponentActivity() {
                             }
                             Text(text = if(checked) "Выбрано" else "Не выбрано")
                         }
+                    }
+                    Box(
+                        modifier = Modifier.height(20.dp)
+                    )
+                    Column(
+                        modifier = Modifier.selectableGroup()
+                    ){
+                        FloatingActionButton(
+                            onClick = {},
+                        ) { }
+                        ExtendedFloatingActionButton(
+                            onClick = {},
+                            text = {Text("TEXT")},
+                            icon = {Icon(painter = painterResource(R.drawable.ic_launcher_foreground),
+                                contentDescription = "456")}
+                        )
                     }
                 }
             }
