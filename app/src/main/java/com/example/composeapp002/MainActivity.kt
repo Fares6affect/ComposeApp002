@@ -14,17 +14,23 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composeapp002.ui.theme.ComposeApp002Theme
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,6 +97,28 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     Text(text = "Выбранный элемент: " + selected)
+                    var color by remember { mutableStateOf(Color.Green) }
+                    Column(
+                        modifier = Modifier.selectableGroup()
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .background(color)
+                                .fillMaxWidth()
+                        ){
+                            IconButton(
+                                onClick = {
+                                    color = Color(Random.nextInt(255),
+                                        Random.nextInt(255),
+                                        Random.nextInt(255))
+                                }
+                            ) {
+                                Icon(painter = painterResource(R.drawable.ic_launcher_foreground),
+                                    contentDescription = "123")
+                            }
+                        }
+                    }
                 }
             }
         }
